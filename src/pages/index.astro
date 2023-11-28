@@ -1,0 +1,140 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@layouts/Layout.astro";
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
+import LinkButton from "@components/LinkButton.astro";
+import Hr from "@components/Hr.astro";
+import Card from "@components/Card";
+import Socials from "@components/Socials.astro";
+import getSortedPosts from "@utils/getSortedPosts";
+import slugify from "@utils/slugify";
+import { SOCIALS } from "@config";
+
+const posts = await getCollection("blog");
+
+const sortedPosts = getSortedPosts(posts);
+const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
+
+const socialCount = SOCIALS.filter((social) => social.active).length;
+---
+
+<Layout>
+	<Header />
+	<main id="main-content">
+		<section id="hero">
+			<h1>darshi.1337</h1>
+			<a target="_blank" href="/rss.xml" class="rss-link" aria-label="rss feed" title="RSS Feed">
+				<svg xmlns="http://www.w3.org/2000/svg" class="rss-icon"
+					><path d="M19 20.001C19 11.729 12.271 5 4 5v2c7.168 0 13 5.832 13 13.001h2z"></path><path
+						d="M12 20.001h2C14 14.486 9.514 10 4 10v2c4.411 0 8 3.589 8 8.001z"></path><circle
+						cx="6"
+						cy="18"
+						r="2"></circle>
+				</svg>
+			</a>
+
+			    <header>
+    </header>
+
+	<nav style="font-size: 1.2em;">
+		<a href="#introduction">Introduction</a> |
+		<a href="#music">Music</a> |
+		<a href="#tech">Tech Interests</a>
+	</nav>
+
+    <section id="introduction">
+        <p>Hey there, I'm Priyadarshi Annupam, a Mechanical Engineering student in my second year at the Indian Institute of Technology, Varanasi. Welcome to my corner of the internet!</p>
+    </section>
+
+    <section id="music">
+        <p>When I'm not immersed in the world of gears and machines, you'll likely find me lost in the rhythms of Arctic Monkeys and The Neighbourhood. Music fuels my creative spirit, and I believe it's the perfect backdrop for my adventures in technology.</p>
+    </section>
+
+    <section id="tech">
+        <p>I spend my free time delving into the realms of web development, game development, and the exciting frontiers of machine learning and artificial intelligence. Whether I'm ranting about TypeScript, building something new, or experimenting with cutting-edge technologies, this is where it all comes together.</p>
+        <p>Join me on this journey as I navigate the intersection of mechanical engineering and the ever-evolving tech landscape. Feel free to explore my projects, read my thoughts, and reach out if you share a passion for tinkering with code or discussing the latest tech trends. Let's build, create, and innovate together!</p>
+    </section>
+		<Hr />
+
+		{
+			featuredPosts.length > 0 && (
+				<>
+					<section id="featured">
+						<h2>Featured</h2>
+						<ul>
+							{featuredPosts.map(({ data }) => (
+								<Card href={`/posts/${slugify(data)}`} frontmatter={data} secHeading={false} />
+							))}
+						</ul>
+					</section>
+					<Hr />
+				</>
+			)
+		}
+
+		<section id="recent-posts">
+			<h2>Recent Posts</h2>
+			<ul>
+				{
+					sortedPosts.map(
+						({ data }, index) =>
+							index < 4 && (
+								<Card href={`/posts/${slugify(data)}`} frontmatter={data} secHeading={false} />
+							)
+					)
+				}
+			</ul>
+			<div class="all-posts-btn-wrapper">
+				<LinkButton href="/posts">
+					All Posts
+					<svg xmlns="http://www.w3.org/2000/svg"
+						><path
+							d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"
+						></path>
+					</svg>
+				</LinkButton>
+			</div>
+		</section>
+	</main>
+
+	<Footer />
+</Layout>
+
+<style>
+	/* ===== Hero Section ===== */
+	#hero {
+		@apply pb-6 pt-8;
+	}
+	#hero h1 {
+		@apply my-4 inline-block text-3xl font-bold sm:my-8 sm:text-5xl;
+	}
+	#hero .rss-link {
+		@apply mb-6;
+	}
+	#hero .rss-icon {
+		@apply mb-2 h-6 w-6 scale-110 fill-skin-accent sm:mb-3 sm:scale-125;
+	}
+	#hero p {
+		@apply my-2;
+	}
+	.social-wrapper {
+		@apply mt-4 flex flex-col sm:flex-row sm:items-center;
+	}
+	.social-links {
+		@apply mb-1 mr-2 whitespace-nowrap sm:mb-0;
+	}
+
+	/* ===== Featured & Recent Posts Sections ===== */
+	#featured,
+	#recent-posts {
+		@apply pb-6 pt-12;
+	}
+	#featured h2,
+	#recent-posts h2 {
+		@apply text-2xl font-semibold tracking-wide;
+	}
+	.all-posts-btn-wrapper {
+		@apply my-8 text-center;
+	}
+</style>

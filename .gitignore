@@ -1,12 +1,5 @@
-# Hugo default output directory
 /public/
-
-# Hugo resources directory containing generated assets
 /resources/_gen/
-
-# Hugo build lock file
 .hugo_build.lock
-
-# OS generated files
 .DS_Store
 Thumbs.db

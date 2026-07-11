@@ -45,10 +45,10 @@
   <meta name="twitter:description" content="{{ $description }}">
   {{ with $imageURL }}<meta name="twitter:image" content="{{ . }}">{{ end }}
   <link rel="canonical" href="{{ .Permalink }}">
-  <link rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" href="/index.xml">
-  <link rel="icon" href="/favicon.ico">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" href="{{ "index.xml" | relURL }}">
+  <link rel="icon" href="{{ "favicon.ico" | relURL }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ "favicon-32x32.png" | relURL }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ "favicon-16x16.png" | relURL }}">
 
   {{ if .Params.latex }}
     <link rel="preload" as="style" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" onload="this.onload=null;this.rel='stylesheet'">
@@ -78,16 +78,16 @@
       <nav>
         <ul>
           {{ range . }}
-            <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+            <li><a href="{{ .URL | relURL }}">{{ .Name }}</a></li>
           {{ end }}
         </ul>
       </nav>
     {{ end }}
   </main>
   <footer>
-    <p>Copyright 2018&ndash;{{ now.Year }} &centerdot; <a href="/">{{ site.Title }}</a></p>
-    <img src="/images/license.png" alt="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License." width="88" height="31">
-    <p> Unless otherwise noted, site content is licensed under a <a href="/LICENSE">Creative Commons license</a>, and the source code under the <a href="/COPYING">GNU GPL</a>.</p>
+    <p>Copyright 2018&ndash;{{ now.Year }} &centerdot; <a href="{{ site.Home.RelPermalink }}">{{ site.Title }}</a></p>
+    <img src="{{ "images/license.png" | relURL }}" alt="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License." width="88" height="31">
+    <p> Unless otherwise noted, site content is licensed under a <a href="{{ "LICENSE" | relURL }}">Creative Commons license</a>, and the source code under the <a href="{{ "COPYING" | relURL }}">GNU GPL</a>.</p>
   </footer>
 </body>
 </html>

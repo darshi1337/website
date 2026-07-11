@@ -1,0 +1,20 @@
+{{ $content := .Content }}
+{{ $footnotesList := findRE `(?s)<div class="footnotes".*?</div>` $content }}
+{{ if gt (len $footnotesList) 0 }}
+  {{ $footnotes := index $footnotesList 0 }}
+  {{ range findRE `(?s)<li id="fn:[^"]*">.*?</li>` $footnotes }}
+    {{ $id := replaceRE `id="fn:([^"]+)"` `${1}` (index (findRE `id="fn:[^"]*"` .) 0) }}
+    {{ $footnote := replaceRE `(?s)^<li[^>]*>(.*?)</li>$` `${1}` . }}
+    {{ $footnote := replaceRE `(?s)<p>(.*?)</p>` `${1}` $footnote }}
+    {{ $footnote = replaceRE `<a href="#fnref:[^"]*"[^>]*>.*?</a>` `` $footnote }}
+    {{ $footnote = replaceRE `,\s*[^,"]+ (?:4[3-9]\d|[5-9]\d{2}|\d{4,})w` `` $footnote }}
+    {{ $side := printf `<span class="side" data-nosnippet><sup>%s</sup>%s</span>` $id $footnote }}
+    {{ $pattern := printf `(?s)(<sup id=".*"><a href="#fn:%s".*?</a></sup>)` $id }}
+    {{ $replacement := printf `<sup>%s</sup> %s` $id (replace $side "$" "$$") }}
+    {{ $content = replaceRE $pattern $replacement $content }}
+  {{ end }}
+  {{ $content = replaceRE `<p>\x{00A0}<sup.*?<\/sup>(.*)` `<p>$1` $content }}
+  {{ replace $content $footnotes "" | safeHTML }}
+{{ else }}
+  {{ $content | safeHTML }}
+{{ end }}

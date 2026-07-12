@@ -17,8 +17,6 @@ $$
 \lambda\|\theta\|_2^2
 $$
 
-This website is a collection of my projects, technical notes, research explorations, and occasional thoughts on engineering.
-
 Feel free to browse around my research notes, projects, or professional resume.
 
 Find me on [GitHub](https://github.com/darshi1337) and [LinkedIn](https://www.linkedin.com/in/priyadarshi-annupam-379528258/).

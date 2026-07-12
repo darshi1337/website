@@ -54,6 +54,6 @@ $$
 \nabla
 $$
 
-To explore my technical background and professional experience, [click here](/resume).
+To explore my technical background and professional experience, [click here]({{< relURL "resume" >}}).
 
 [^fn:1]: ![](./assets/images/home-illustration.png)

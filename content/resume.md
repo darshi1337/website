@@ -12,7 +12,7 @@ latex: true
   .resume-section { margin-bottom: 2.2rem; }
   .resume-item { margin-bottom: 1.8rem; }
   .resume-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.1rem; }
-  .resume-title { font-family: var(--font-sc); text-transform: lowercase; font-weight: bold; font-size: 1.35rem; }
+  .resume-title { font-family: var(--font-sc); font-weight: bold; font-size: 1.35rem; }
   .resume-title a { color: var(--link); }
   .resume-date { font-style: italic; font-family: var(--font-sans); font-size: 1.15rem; color: var(--accent); white-space: nowrap; }
   .resume-subtitle { display: flex; justify-content: space-between; font-style: italic; margin-bottom: 0.6rem; font-size: 1.2rem; }

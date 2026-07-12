@@ -12,26 +12,36 @@ latex: true
   @media (max-width: 860px) { .side img { margin-top: 0!important; } }
 </style>
 
-&nbsp;[^fn:1]Here is a curated list of research and engineering projects. All formulations are documented under rigorous mathematical models.
+&nbsp;[^fn:1]Here is a curated list of research and engineering projects.
 
 [^fn:1]: ![](./assets/images/home-illustration.png)
 
-## Fast Fourier Transform (FFT) in Rust
+## Apogee
 
-Implementation of a split-radix Cooley-Tukey FFT algorithm with cache-oblivious memory layouts.
+A privacy-first browser extension that performs local AI inference for webpage summarization and contextual question answering. Apogee integrates **WebLLM** and **WebGPU** to execute quantized language models directly inside the browser without relying on external APIs. For larger models, it seamlessly falls back to a local **Ollama** backend powered by a FastAPI server.
 
-$$\hat{X}_k = \sum_{n=0}^{N-1} x_n e^{-i 2\pi k n / N}$$
+$$
+\LARGE
+\nabla
+$$
 
-- **Repository**: [github.com/example/fft-rust](https://github.com/)
+- **Technologies**: JavaScript, WebGPU, WebLLM, FastAPI, Ollama, Python
+- **Features**: In-browser LLM inference, streaming responses, browser extensions, local AI, cross-browser support
+- **Repository**: https://github.com/darshi1337/apogee
 - **License**: MIT
 
-## Convex Optimization Solver
+---
 
-An interior-point solver for second-order cone programming (SOCP) written in pure C.
+## HermitLM
 
-$$\begin{aligned}
-\text{minimize} \quad & c^T x \\
-\text{subject to} \quad & \| A_i x + b_i \|_2 \le c_i^T x + d_i, \quad i = 1, \dots, m
-\end{aligned}$$
+An end-to-end framework for generating large-scale synthetic conversational datasets and training compact transformer language models from scratch. HermitLM includes automated data generation pipelines, custom tokenizer training, distributed model training, and evaluation tooling, enabling rapid experimentation with lightweight language models.
 
-- **Repository**: [github.com/example/socp-c](https://github.com/)
+$$
+\LARGE
+\nabla
+$$
+
+- **Technologies**: Python, PyTorch, Transformers, SentencePiece, Hugging Face
+- **Features**: Synthetic dataset generation, tokenizer training, transformer implementation, language model training
+- **Repository**: https://github.com/darshi1337/hermitlm
+- **License**: MIT

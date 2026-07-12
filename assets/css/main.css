@@ -57,7 +57,11 @@ main, footer {
     margin-right: 26rem;
 }
 
-h1, h2, .byline .author, .tags {
+h1, h2 {
+    font-family: var(--font-sc);
+}
+
+.byline .author, .tags {
     font-family: var(--font-sc);
     text-transform: lowercase;
 }

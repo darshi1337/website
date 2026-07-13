@@ -41,10 +41,10 @@ This is a personal webpage built with Hugo, designed with a clean LaTeX-like aes
 
 1. Start the Hugo development server:
    ```bash
-   hugo server
+   hugo server --port 1337
    ```
 
-2. Open your browser and navigate to `http://localhost:1313`.
+2. Open your browser and navigate to `http://localhost:1337`.
 
 ## Static Files
 

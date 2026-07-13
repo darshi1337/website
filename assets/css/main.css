@@ -83,9 +83,15 @@ h1::before {
     aspect-ratio: 475.34 / 59.45;
     margin: 0 auto 1.25rem;
     background-color: var(--text);
-    -webkit-mask: url(/images/ornament.svg) center / contain no-repeat;
-    mask: url(/images/ornament.svg) center / contain no-repeat;
+    -webkit-mask-image: var(--ornament-mask);
+    -webkit-mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
     -webkit-mask-mode: alpha;
+    mask-image: var(--ornament-mask);
+    mask-position: center;
+    mask-repeat: no-repeat;
+    mask-size: contain;
     mask-mode: alpha;
 }
 
@@ -98,9 +104,15 @@ h1:has(+ .subtitle) {
     aspect-ratio: 475.34 / 59.45;
     margin: 3.2rem auto 2.4rem;
     background-color: var(--text);
-    -webkit-mask: url(/images/ornament.svg) center / contain no-repeat;
-    mask: url(/images/ornament.svg) center / contain no-repeat;
+    -webkit-mask-image: var(--ornament-mask);
+    -webkit-mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
     -webkit-mask-mode: alpha;
+    mask-image: var(--ornament-mask);
+    mask-position: center;
+    mask-repeat: no-repeat;
+    mask-size: contain;
     mask-mode: alpha;
 }
 

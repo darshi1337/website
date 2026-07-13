@@ -79,12 +79,14 @@ h1 {
 h1::before {
     content: "";
     display: block;
-    width: 5.5rem;
-    aspect-ratio: 331.75 / 162.67;
+    width: 8rem;
+    aspect-ratio: 475.34 / 59.45;
     margin: 0 auto 1.25rem;
     background-color: var(--text);
-    -webkit-mask: url(/images/ornament-divider.svg) center / contain no-repeat;
-    mask: url(/images/ornament-divider.svg) center / contain no-repeat;
+    -webkit-mask: url(/images/ornament.svg) center / contain no-repeat;
+    mask: url(/images/ornament.svg) center / contain no-repeat;
+    -webkit-mask-mode: alpha;
+    mask-mode: alpha;
 }
 
 h1:has(+ .subtitle) {
@@ -92,12 +94,14 @@ h1:has(+ .subtitle) {
 }
 
 .ornament {
-    width: 5.5rem;
-    aspect-ratio: 331.75 / 162.67;
+    width: 8rem;
+    aspect-ratio: 475.34 / 59.45;
     margin: 3.2rem auto 2.4rem;
     background-color: var(--text);
-    -webkit-mask: url(/images/ornament-divider.svg) center / contain no-repeat;
-    mask: url(/images/ornament-divider.svg) center / contain no-repeat;
+    -webkit-mask: url(/images/ornament.svg) center / contain no-repeat;
+    mask: url(/images/ornament.svg) center / contain no-repeat;
+    -webkit-mask-mode: alpha;
+    mask-mode: alpha;
 }
 
 .notice main, .notice footer {

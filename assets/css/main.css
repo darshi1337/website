@@ -18,7 +18,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-    :root {
+    :root:not([data-theme="light"]) {
         --bg: #16161a;
         --text: #d6d6d6;
         --selection-bg: #2a3a52;
@@ -31,6 +31,20 @@
         --button-bg: #232327;
         --button-hover-bg: #2c2c30;
     }
+}
+
+:root[data-theme="dark"] {
+    --bg: #16161a;
+    --text: #d6d6d6;
+    --selection-bg: #2a3a52;
+    --selection-text: #eaf1ff;
+    --link: #8cb4e8;
+    --link-hover-bg: #1c2533;
+    --accent: #e0928c;
+    --border: #3a3a3a;
+    --input-border: #555;
+    --button-bg: #232327;
+    --button-hover-bg: #2c2c30;
 }
 
 html {
@@ -543,5 +557,69 @@ h2:focus-within .anchor {
     .side, figcaption {
         margin-right: -16.5rem;
         width: 15rem;
+    }
+}
+
+.nav-toggle {
+    margin-left: auto !important;
+}
+
+.theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.2rem;
+    height: 2.2rem;
+    padding: 0;
+    color: var(--text);
+    background-color: var(--button-bg);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.theme-toggle:hover {
+    background-color: var(--button-hover-bg);
+}
+
+.theme-toggle svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.theme-toggle .icon-moon {
+    display: none;
+}
+
+.theme-toggle .icon-sun {
+    display: block;
+}
+
+:root[data-theme="dark"] .theme-toggle .icon-moon {
+    display: block;
+}
+
+:root[data-theme="dark"] .theme-toggle .icon-sun {
+    display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .theme-toggle .icon-moon {
+        display: block;
+    }
+
+    :root:not([data-theme="light"]) .theme-toggle .icon-sun {
+        display: none;
+    }
+}
+
+@media print {
+    .theme-toggle {
+        display: none;
     }
 }

@@ -77,7 +77,8 @@
   {{ with $cssParts | resources.Concat $bundleName | minify }}
     {{ $ornamentMask := printf "data:image/svg+xml;base64,%s" (readFile "static/images/ornament.svg" | base64Encode) }}
     {{ $ornamentCSS := printf ":root{--ornament-mask:url('%s')}" ($ornamentMask | safeURL) }}
-    <style>{{ printf "%s%s" $ornamentCSS .Content | safeCSS }}</style>
+    {{ $css := replace .Content "/fonts/" ("fonts/" | relURL) }}
+    <style>{{ printf "%s%s" $ornamentCSS $css | safeCSS }}</style>
   {{ end }}
   {{ block "head" . }}{{ end }}
   {{ with resources.Get "js/instantpage.js" | minify | fingerprint }}

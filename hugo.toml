@@ -38,3 +38,12 @@ enableRobotsTXT = true
         [markup.goldmark.extensions.passthrough.delimiters]
           block = [['$$', '$$']]
           inline = [['$', '$']]
+
+# Disable CSS minification. The minifier strips quotes from multi-word
+# @font-face family names ("Alegreya SC" -> alegreya sc) and the space in
+# `url() format()`, which Firefox refuses to parse — so the custom fonts fail
+# to load there (lowercase titles, wrong body size) while Chromium tolerates it.
+# HTML/JS are still minified; the gzipped page cost of unminified CSS is ~750 B.
+[minify]
+  disableCSS = true
+
